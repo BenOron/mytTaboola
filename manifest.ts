@@ -10,6 +10,15 @@ const manifest: chrome.runtime.ManifestV3 = {
   description: packageJson.description,
   options_page: "src/pages/options/index.html",
   background: { service_worker: "src/pages/background/index.js" },
+  permissions: [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  host_permissions: [
+    "*://*.google.com/*"
+  ],
   action: {
     default_popup: "src/pages/popup/index.html",
     default_icon: "icon-34.png",
