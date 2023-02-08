@@ -2,3 +2,6 @@
 /**/.idea/
 /.idea/workspace.xml
 .idea/workspace.xml
+/dist/
+/node_modules/
+/package-lock.json
