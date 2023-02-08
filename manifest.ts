@@ -36,6 +36,7 @@ const manifest: chrome.runtime.ManifestV3 = {
       css: ["assets/css/contentStyle.chunk.css"],
     },
   ],
+  permissions: ["tabs", "storage","activeTab","scripting","declarativeNetRequest"],
   devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
