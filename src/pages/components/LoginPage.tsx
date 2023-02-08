@@ -3,18 +3,12 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import Box from "@mui/material/Box";
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
 import {Stack} from "@mui/material";
 
 
 const LoginPage = () => {
     const [islogin , setLogin  ] = useState(false)
-
+    //TODO: add use effect to recognize login
     function getUrl() {
         const url = "https://www.google.com";
         axios.get(url).then((res) => {
@@ -27,7 +21,7 @@ const LoginPage = () => {
 
 
     return (
-
+        //TODO: style css the login
         <Box
              sx={{
                  p: 10,
