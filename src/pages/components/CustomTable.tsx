@@ -46,6 +46,8 @@ export default function CustomTable() {
             setData(res?.data?.results);
             console.log(data);
             setLoaded(true)
+        }).catch((err)=>{
+            console.error(err);
         });
     }, [])
 
