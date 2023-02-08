@@ -5,6 +5,7 @@ import axios from 'axios';
 import Box from "@mui/material/Box";
 import {Stack} from "@mui/material";
 import { UserContext } from "../../UserContext";
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const LoginPage = (props) => {
@@ -13,6 +14,7 @@ const LoginPage = (props) => {
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const [isClicked, setClicked] = useState(false);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -27,10 +29,12 @@ const LoginPage = (props) => {
             "email": email,
             "pass": pass
         }
+        setClicked(true);
         const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/login";
         axios.post(url, formUser).then((res) => {
             console.log(res.status);
             if (res.status == 200){
+                setClicked(false);
             }
             setUser(formUser);
 
@@ -48,9 +52,11 @@ const LoginPage = (props) => {
              }}
         >
             <Stack>
-                <TextField id="email" name={'username'} onChange={(e) => {setEmail(e.target.value)}} label="Email" variant="standard"/>
-                <TextField id="password" label="Password" onChange={(e) => {setPass(e.target.value)}} name={'pass'} type="password" variant="standard" />
-                <Button onClick={getUrl}> Login </Button>
+                { !isClicked && <TextField id="email" name={'username'} onChange={(e) => {setEmail(e.target.value)}} label="Email" variant="standard"/>}
+                { !isClicked && <TextField id="password" label="Password" onChange={(e) => {setPass(e.target.value)}} name={'pass'} type="password" variant="standard" />}
+                { !isClicked && <Button onClick={getUrl}> Login </Button>}
+
+                {isClicked && <CircularProgress/>}
             </Stack>
         </Box>
 

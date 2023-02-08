@@ -7,7 +7,7 @@ import Settings from "@pages/components/Settings";
 import { UserContext } from "../../UserContext";
 
 const Popup = () => {
-  const [user, setUser] = useState("Gal");
+  const [user, setUser] = useState(null);
 
   return (
     <div>

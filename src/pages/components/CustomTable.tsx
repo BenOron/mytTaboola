@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect, useState} from "react";
+import CircularProgress from '@mui/material/CircularProgress';
+
 import axios from "axios";
 import {object} from "prop-types";
 
@@ -36,12 +38,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function CustomTable() {
     const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/stats"
     const [data, setData] = useState([])
+    const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
         axios.get(url).then((res) => {
             console.log(res?.data?.results);
             setData(res?.data?.results);
             console.log(data);
+            setLoaded(true)
         });
     }, [])
 
@@ -74,14 +78,18 @@ export default function CustomTable() {
 
     return (
 
-        <TableContainer component={Paper}>
-            {data?.length > 0 &&
-            <Table  aria-label="customized table">
-                <RetrunHeader/>
-                <TableBody>
-                    <BuildTable/>
-                </TableBody>
-            </Table>}
-        </TableContainer>
-    );
+         <div>
+             { isLoaded && <TableContainer component={Paper}>
+                {data?.length > 0 &&
+                <Table  aria-label="customized table">
+                    <RetrunHeader/>
+                    <TableBody>
+                        <BuildTable/>
+                    </TableBody>
+                </Table>}
+            </TableContainer>}
+             { !isLoaded && <CircularProgress/>}
+         </div>
+
+);
 }
