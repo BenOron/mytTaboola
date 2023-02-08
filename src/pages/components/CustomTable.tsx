@@ -15,8 +15,11 @@ import {object} from "prop-types";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor:'rgb(0, 75, 122)',
         color: theme.palette.common.white,
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow:'ellipsis'
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,

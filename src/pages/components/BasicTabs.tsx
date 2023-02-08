@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CustomTable from "@pages/components/CustomTable";
 import { UserContext } from "../../UserContext";
+import Graph from "@pages/components/Graph";
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import ChatIcon from '@mui/icons-material/Chat';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -46,17 +49,19 @@ export default function BasicTabs() {
         setValue(newValue);
     };
 
+    // @ts-ignore
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
+                    <Tab icon={<AutoGraphIcon />}  label="Current Campaign" {...a11yProps(0)} />
+                    <Tab icon={<ChatIcon />}  label="Support" {...a11yProps(1)} />
+                    {/*<Tab label="Item Three" {...a11yProps(2)} />*/}
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-              <CustomTable/>
+               <> <Graph/>
+              <CustomTable/> </>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two
