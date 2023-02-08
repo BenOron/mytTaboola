@@ -44,6 +44,13 @@ function a11yProps(index: number) {
 export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
     const { user } = useContext(UserContext);
+    const campaignName = "CD_ENGALL_gEN_cXO_Belen_TB_Global";
+    const fakeData =  [{
+        "Campaign Number": "374095",
+        "Clicks": 4721,
+        "Spent": "2,207€",
+        "Viewable Impression": "4,129,732",
+        "vCPM": "0.53€"}];
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -60,8 +67,9 @@ export default function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
+                <Typography sx={{ textDecoration: 'underline'}}>{campaignName}</Typography>
                <> <Graph/>
-              <CustomTable/> </>
+              <CustomTable fakeData={fakeData}/> </>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two

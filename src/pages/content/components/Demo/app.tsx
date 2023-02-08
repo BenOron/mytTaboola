@@ -9,8 +9,7 @@ export default function App() {
       console.log("Title suggestion1")
     const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/chat_headings_rephrase";
     axios.post(url, {"message": extractData["title"] }).then((res) => {
-      console.log("Title suggestion2")
-      console.log(res);
+      console.log("Title suggestion:", res.data.response)
     }).catch((err) => {
       console.error(err);
     })
