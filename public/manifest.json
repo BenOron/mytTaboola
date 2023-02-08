@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "my_taboola",
+  "name": "my-taboola",
   "version": "0.0.1",
   "description": "chrome extension boilerplate",
   "options_page": "src/pages/options/index.html",
