@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {object} from "prop-types";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -28,51 +31,57 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
-) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 export default function CustomTable() {
+    const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/stats"
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        axios.get(url).then((res) => {
+            console.log(res?.data?.results);
+            setData(res?.data?.results);
+            console.log(data);
+        });
+    }, [])
+
+
+    const RetrunHeader = () => {
+        return (
+            <TableHead>
+            <TableRow>
+                {
+                    Object.keys(data[0]).map((headrName,idx) => {
+                        return (<StyledTableCell style={{textDecoration: 'capit'}}>{headrName}</StyledTableCell>)
+                    })
+
+                }
+            </TableRow>
+        </TableHead>)
+    }
+
+    const BuildTable = () => {
+        return (<>{ data?.length > 0 && data?.map((row, idx) => (
+            <StyledTableRow key={idx}>
+                { row && Object.values(row).map((item) => (
+                    <StyledTableCell component="th" scope="row">
+                        {item}
+                    </StyledTableCell>
+                ))}
+            </StyledTableRow>
+        ))}</>)
+    }
+
     return (
+
         <TableContainer component={Paper}>
+            {data?.length > 0 &&
             <Table  aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                    </TableRow>
-                </TableHead>
+                <RetrunHeader/>
                 <TableBody>
-                    {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                            <StyledTableCell component="th" scope="row">
-                                {row.name}
-                            </StyledTableCell>
-                            <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                            <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
+                    <BuildTable/>
                 </TableBody>
-            </Table>
+            </Table>}
         </TableContainer>
     );
 }

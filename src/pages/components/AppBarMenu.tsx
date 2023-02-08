@@ -11,8 +11,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import {useEffect} from "react";
+import {useEffect,useContext} from "react";
 
+import { UserContext } from "../../UserContext";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,7 +22,8 @@ function ResponsiveAppBar(props) {
     useEffect(() => {
         // console.log(props);
     }, []);
-    const {islogin} = props;
+
+    const { user } = useContext(UserContext);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -39,6 +41,10 @@ function ResponsiveAppBar(props) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleChooseUserMenu = () => {
+
+    }
 
     return (
         <AppBar position="static">
@@ -83,11 +89,11 @@ function ResponsiveAppBar(props) {
                         My Taboola
                     </Typography>
 
-                    {islogin &&
+                    {user &&
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                <Avatar alt={user?.username} src="/static/images/avatar/2.jpg"/>
                             </IconButton>
                         </Tooltip>
                         <Menu
