@@ -17,7 +17,8 @@ const manifest: chrome.runtime.ManifestV3 = {
     "tabs"
   ],
   host_permissions: [
-    "*://*.google.com/*"
+    "*://*.google.com/*",
+    "*://*.run.app/*"
   ],
   action: {
     default_popup: "src/pages/popup/index.html",
