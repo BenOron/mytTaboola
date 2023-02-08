@@ -13,7 +13,6 @@ export default function App() {
     const doc = parser.parseFromString(html, "text/html");
 
     const title = doc.querySelectorAll("h1, h2, h3, h4, h5, h6, title");
-    debugger
     const description = doc.querySelectorAll("P");
     const images = doc.querySelectorAll("img");
 
