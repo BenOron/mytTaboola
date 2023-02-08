@@ -2,7 +2,7 @@ import { useEffect,useState } from "react";
 
 export default function App() {
   const [extractData,setExtractData] = useState({})
-  const [dom,setDom] = useState({})
+  const [dom,setDom] = useState({title:'p'})
   useEffect(() => {
     console.log(extractData)
   },[extractData]);
