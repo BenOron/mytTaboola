@@ -14,24 +14,17 @@ const Chat = () => {
         //     message: "Test",
         //     isRemote: false
         // }])
-        const oldMessages = localStorage.getItem('messages')
-        if (oldMessages?.length > 0)
-        {
-            setMessages(arr=> [...arr, oldMessages])
-        }
+
         console.log('Messages',messages);
 
     }, [])
 
     function handleNewMessage(msgObj) {
         setMessages(arr=> [...arr, msgObj])
-        localStorage.setItem('messages', JSON.stringify(messages))
-        console.log(localStorage.getItem('messages'))
         axios.post(url, {message: msgObj.message}).then((res) => {
             setTimeout(() => {
                 setMessages(arr=> [...arr, {message: res.data.response, isRemote: true}])
             }, 1000)
-            localStorage.setItem('messages', JSON.stringify(messages))
         })
 
     }

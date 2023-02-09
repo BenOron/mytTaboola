@@ -70,7 +70,6 @@ export default function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <Typography sx={{ textDecoration: 'underline'}}>{campaignName}</Typography>
                <> <Graph/>
               <CustomTable fakeData={fakeData}/> </>
             </TabPanel>
