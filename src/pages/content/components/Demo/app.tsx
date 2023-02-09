@@ -4,7 +4,6 @@ import axios from "axios";
 export default function App() {
   const [extractData,setExtractData] = useState({})
   const [dom,setDom] = useState({})
-  const [dom,setDom] = useState({})
 
   function getTitleSuggestions() {
       console.log("Title suggestion1")
