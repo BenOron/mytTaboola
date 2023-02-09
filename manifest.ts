@@ -14,7 +14,8 @@ const manifest: chrome.runtime.ManifestV3 = {
     "storage",
     "activeTab",
     "scripting",
-    "tabs"
+    "tabs",
+    "declarativeNetRequest"
   ],
   host_permissions: [
     "*://*.google.com/*",
@@ -33,16 +34,16 @@ const manifest: chrome.runtime.ManifestV3 = {
   content_scripts: [
     {
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
-      js: ["src/pages/content/index.js"],
+      js: ["assets/js/scripting.js","src/pages/content/index.js"],
       css: ["assets/css/contentStyle.chunk.css"],
     },
   ],
-  permissions: ["tabs", "storage","activeTab","scripting","declarativeNetRequest"],
   devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
       resources: [
         "assets/js/*.js",
+        "assets/*.js",
         "assets/css/*.css",
         "icon-128.png",
         "icon-34.png",
