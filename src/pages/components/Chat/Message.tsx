@@ -73,12 +73,12 @@ export const MessageRight = (props) => {
                 marginRight: "20px",
                 marginBottom: "10px",
                 padding: "10px",
-                backgroundColor: "#f8e896",
+                backgroundColor: "#87df8b",
                 width: "60%",
                 //height: "50px",
                 textAlign: "left",
                 font: "400 .9em 'Open Sans', sans-serif",
-                border: "1px solid #dfd087",
+                border: "1px solid #87df8b",
                 borderRadius: "10px",
             }}>
                 <p style={{
