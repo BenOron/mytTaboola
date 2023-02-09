@@ -8,6 +8,7 @@
     "service_worker": "src/pages/background/index.js"
   },
   "permissions": [
+    "tabs",
     "storage",
     "activeTab",
     "scripting",
