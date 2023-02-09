@@ -4,11 +4,12 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CustomTable from "@pages/components/CustomTable";
-import Chat from "@pages/components/Chat";
+import Chat from "@pages/components/Chat/Chat";
 import { UserContext } from "../../UserContext";
 import Graph from "@pages/components/Graph";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import ChatIcon from '@mui/icons-material/Chat';
+
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -46,6 +47,7 @@ export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
     const { user } = useContext(UserContext);
     const campaignName = "CD_ENGALL_gEN_cXO_Belen_TB_Global";
+    const [msgArr, setMsgArr] = useState([])
     const fakeData =  [{
         "Campaign Number": "374095",
         "Clicks": 4721,
@@ -73,7 +75,7 @@ export default function BasicTabs() {
               <CustomTable fakeData={fakeData}/> </>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Chat/>
+                    <Chat/>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
