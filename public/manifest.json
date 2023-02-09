@@ -8,10 +8,10 @@
     "service_worker": "src/pages/background/index.js"
   },
   "permissions": [
+    "tabs",
     "storage",
     "activeTab",
     "scripting",
-    "tabs",
     "declarativeNetRequest"
   ],
   "host_permissions": [
@@ -33,7 +33,6 @@
         "<all_urls>"
       ],
       "js": [
-        "assets/js/scripting.js",
         "src/pages/content/index.js"
       ],
       "css": [
@@ -46,7 +45,6 @@
     {
       "resources": [
         "assets/js/*.js",
-        "assets/*.js",
         "assets/css/*.css",
         "icon-128.png",
         "icon-34.png"
