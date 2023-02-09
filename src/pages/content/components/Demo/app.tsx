@@ -73,6 +73,10 @@ export default function App() {
     const random = Math.floor(Math.random() * suggestions.length);
     document.getElementsByClassName(dom.title)[0].textContent = suggestions[random]
   }
+  const setImage = (imageElm,imageSuggestion)=>{
+    const random = Math.floor(Math.random() * imageSuggestion.length);
+      imageElm.childNodes[0].srcset = 'data:image/png;base64,'+ imageSuggestions[random]
+  }
 
   const FooterElm ='<div className="footer-mytaboola-title" style="border: 1px solid rgb(0 0 0 / 9%); border-radius: 7px;position: relative;width: 100%;height: 30px; vertical-align: top; color: white;text-align: center;">' +
       '<div style="vertical-align: inherit;" > ' +
@@ -118,7 +122,7 @@ export default function App() {
       console.log('end...')
       document.getElementsByClassName("next_title")[1].addEventListener('click', () => {
         if(imageSuggestions){
-          imageElm.childNodes[0].srcset = 'data:image/png;base64,'+ imageSuggestions
+          setImage(imageElm,imageSuggestions)
         }
 
       });
