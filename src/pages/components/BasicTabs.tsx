@@ -7,6 +7,7 @@ import CustomTable from "@pages/components/CustomTable";
 import Chat from "@pages/components/Chat/Chat";
 import { UserContext } from "../../UserContext";
 import Graph from "@pages/components/Graph";
+import StatsusCard from "@pages/components/StatsusCard";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import ChatIcon from '@mui/icons-material/Chat';
 
@@ -71,6 +72,7 @@ export default function BasicTabs() {
             </Box>
             <TabPanel value={value} index={0}>
                <> <Graph/>
+                   <StatsusCard/>
               <CustomTable fakeData={fakeData}/> </>
             </TabPanel>
             <TabPanel value={value} index={1}>
