@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CustomTable from "@pages/components/CustomTable";
+import Chat from "@pages/components/Chat";
 import { UserContext } from "../../UserContext";
 import Graph from "@pages/components/Graph";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
@@ -72,7 +73,7 @@ export default function BasicTabs() {
               <CustomTable fakeData={fakeData}/> </>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+              <Chat/>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
