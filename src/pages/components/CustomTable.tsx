@@ -38,17 +38,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 
-export default function CustomTable() {
-    const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/stats"
-    const [data, setData] = useState([])
-    const [isLoaded, setLoaded] = useState(false)
-
+export default function CustomTable(props) {
+    const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/stats";
+    const [data, setData] = useState([]);
+    const [isLoaded, setLoaded] = useState(false);
+    const {fakeData} = props;
     useEffect(() => {
         axios.get(url).then((res) => {
             console.log(res?.data?.results);
             setData(res?.data?.results);
             console.log(data);
             setLoaded(true)
+        }).catch((err)=>{
+            console.error(err);
         });
     }, [])
 
@@ -58,8 +60,8 @@ export default function CustomTable() {
             <TableHead>
             <TableRow>
                 {
-                    Object.keys(data[0]).map((headrName,idx) => {
-                        return (<StyledTableCell style={{textDecoration: 'capit'}}>{headrName}</StyledTableCell>)
+                    Object.keys(fakeData[0]).map((headrName,idx) => {
+                        return (<>{ <StyledTableCell style={{textDecoration: 'capit'}}>{headrName}</StyledTableCell>}</>)
                     })
 
                 }
@@ -68,7 +70,7 @@ export default function CustomTable() {
     }
 
     const BuildTable = () => {
-        return (<>{ data?.length > 0 && data?.map((row, idx) => (
+        return (<>{ fakeData?.map((row, idx) => (
             <StyledTableRow key={idx}>
                 { row && Object.values(row).map((item) => (
                     <StyledTableCell component="th" scope="row">

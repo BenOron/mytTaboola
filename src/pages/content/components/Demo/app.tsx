@@ -1,10 +1,24 @@
 import { useEffect,useState } from "react";
+import axios from "axios";
 
 export default function App() {
   const [extractData,setExtractData] = useState({})
   const [dom,setDom] = useState({})
+
+  function getTitleSuggestions() {
+      console.log("Title suggestion1")
+    const url = "https://sre-hackathon-ads-backend-srv-ayfqltafia-ey.a.run.app/chat_headings_rephrase";
+    axios.post(url, {"message": extractData["title"] }).then((res) => {
+      console.log("Title suggestion:", res.data.response)
+    }).catch((err) => {
+      console.error(err);
+    })
+  }
+
+
   useEffect(() => {
     console.log(extractData)
+    getTitleSuggestions()
   },[extractData]);
 
 
